@@ -1,0 +1,17 @@
+const os = require('os');
+function displayMemoryInfo() {
+const totalMemory = os.totalmem();
+const freeMemory = os.freemem();
+const percentageFree = (freeMemory / totalMemory) * 100;
+console.log(`Total System Memory: ${formatBytes(totalMemory)}`);
+console.log(`Free Memory: ${formatBytes(freeMemory)}`);
+console.log(`Percentage of Free Memory: ${percentageFree.toFixed(2)}%`); }
+// Helper function to format bytes to a human-readable string
+function formatBytes(bytes) { const units = ['B', 'KB',
+'MB', 'GB', 'TB']; let index = 0; while (bytes >= 1024 &&
+index < units.length - 1) { bytes /= 1024;
+index++;
+}
+return `${bytes.toFixed(2)} ${units[index]}`;
+}
+// Call the function to display memory information displayMemoryInfo();
