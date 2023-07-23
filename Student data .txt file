@@ -1,0 +1,23 @@
+const fs = require('fs');
+const filePath = 'student-data.txt';
+// Read the file asynchronously
+fs.readFile(filePath, 'utf8', (err, data) => {
+if (err) {
+console.error('Error reading the file:', err);
+return;
+}
+// Split the data by lines and process each line const
+students = data.split('\n');
+const filteredStudents = [];
+students.forEach(student => {
+// Split each line by the comma to get the name and CGPA const
+[name, cgpa] = student.split(',');
+// Check if the name contains 'MA' and CGPA is greater than 7
+if (name.includes('MA') && parseFloat(cgpa) > 7) {
+filteredStudents.push({ name, cgpa: parseFloat(cgpa) });
+}
+});
+// Output the filtered students
+console.log('Filtered Students:');
+console.log(filteredStudents);
+});
