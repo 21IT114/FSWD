@@ -1,0 +1,37 @@
+const fs = require('fs');
+function compareFiles(file1Path, file2Path) {
+try {
+// Read the content of the two files const
+file1Content = fs.readFileSync(file1Path, 'utf8'); const
+file2Content = fs.readFileSync(file2Path, 'utf8');
+// Compare file sizes const
+file1Size = file1Content.length; const
+file2Size = file2Content.length;
+console.log('Comparison Result:');
+if (file1Size > file2Size) {
+console.log(`${file1Path} is larger than ${file2Path}.`);
+} else if (file1Size < file2Size) {
+console.log(`${file2Path} is larger than ${file1Path}.`);
+} else {
+console.log('Both files have the same size.');
+}
+// Split the content of the files into lines
+const file1Lines = file1Content.split('\n');
+const file2Lines = file2Content.split('\n'); //
+Compare lines and display differences
+console.log('\nLines with differences:');
+for (let i = 0; i < Math.max(file1Lines.length, file2Lines.length); i++) {
+if (file1Lines[i] !== file2Lines[i]) { console.log(`Line ${i + 1}:`);
+console.log(` ${file1Path}: ${file1Lines[i]}`);
+console.log(` ${file2Path}: ${file2Lines[i]}`);
+console.log('---');
+}
+}
+} catch (err) {
+console.error('Error:', err);
+}
+}
+// Compare two files const
+file1Path = 'file1.txt'; const
+file2Path = 'file2.txt';
+compareFiles(file1Path, file2Path);
