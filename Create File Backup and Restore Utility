@@ -1,0 +1,44 @@
+const fs = require('fs');
+const path = require('path');
+// Function to create a backup of a file
+function createBackup(sourceFilePath, backupFolderPath) {
+try {
+const sourceFileName = path.basename(sourceFilePath);
+const backupFilePath = path.join(backupFolderPath, sourceFileName);
+// Read the source file content
+const fileContent = fs.readFileSync(sourceFilePath, 'utf8');
+// Write the file content to the backup file
+fs.writeFileSync(backupFilePath, fileContent, 'utf8');
+console.log(`Backup created: ${backupFilePath}`);
+} catch (err) {
+console.error('Error creating backup:', err);
+}
+}
+// Function to restore a file from a backup
+function restoreFromBackup(backupFilePath, destinationFilePath) {
+try {
+// Read the backup file content
+const fileContent = fs.readFileSync(backupFilePath, 'utf8');
+// Write the file content to the destination file
+fs.writeFileSync(destinationFilePath, fileContent, 'utf8');
+console.log(`File restored: ${destinationFilePath}`);
+} catch (err) {
+console.error('Error restoring file:', err);
+}
+}
+// Example usage:
+// Replace 'source-file.txt' with the path of the file you want to backup. const
+sourceFilePath = 'file1.txt';
+
+IT358 – FSWD CSPIT – KDPIT
+
+21IT114 12
+// Replace 'backup-folder' with the folder where you want to store backups. const
+backupFolderPath = 'backup-folder';
+// Replace 'restore-file.txt' with the path where you want to restore the file. const
+restoreFilePath = 'file2.txt';
+// Create a backup of the source file
+createBackup(sourceFilePath, backupFolderPath);
+// Uncomment this line to restore the file from the backup
+// restoreFromBackup(path.join(backupFolderPath,
+path.basename(sourceFilePath)), restoreFilePath);
