@@ -1,0 +1,7 @@
+const os = require('os');
+const username = os.userInfo().username;
+const homeDirectory = os.homedir();
+const platform = os.platform();
+console.log(`Username: ${username}`); console.log(`Home
+Directory: ${homeDirectory}`); console.log(`Operating
+Platform: ${platform}`);
