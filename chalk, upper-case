@@ -1,0 +1,9 @@
+const chalk = require('chalk');
+const upperCase = require('upper-case');
+// Colorful text using chalk
+console.log(chalk.bold.yellow('Experimenting with Chalk and Upper-Case Modules!'));
+console.log(chalk.green('Success is ') + chalk.blue('colorful') + chalk.red('!'));
+// Upper-case text using upper-case module
+const text = 'hello, world!'; console.log('Original
+Text:', text); console.log('Upper-case Text:',
+upperCase(text));
